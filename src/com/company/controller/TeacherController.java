@@ -7,6 +7,7 @@ import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import com.company.model.Course;
 import com.company.model.Student;
@@ -18,6 +19,7 @@ import com.company.transport.response.Response;
 import com.company.view.CurrentUser;
 import com.company.view.NodeWorker;
 
+import javax.swing.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -43,7 +45,7 @@ public class TeacherController implements DefaultController {
     public PasswordField textPasswordToDeleteAccount;
     public Button buttonSubmitDeleteAccount;
     public Pane paneAllCourses;
-    public TableView tableAllCourses;
+    public TableView<Course> tableAllCourses;
     public TableColumn columnAllCourseName;
     public TableColumn columnAllCourseTeacher;
     public TableColumn columnAllCourseLanguage;
@@ -52,7 +54,7 @@ public class TeacherController implements DefaultController {
     public TableColumn columnAllCourseStartDate;
     public TableColumn columnAllCourseCost;
     public Pane paneMyCourses;
-    public TableView tableMyCourses;
+    public TableView<Course> tableMyCourses;
     public TableColumn columnMyCourseName;
     public TableColumn columnMyCourseTeacher;
     public TableColumn columnMyCourseLanguage;
@@ -76,6 +78,10 @@ public class TeacherController implements DefaultController {
     public TableColumn columnMyStudentsFirstName;
     public TableColumn columnMyStudentsMiddleName;
     public TableColumn columnMyStudentsBirthdate;
+    public AnchorPane paneMoreInfoAboutCourse;
+    public AnchorPane paneMoreInfoAboutMyCourse;
+    public TextArea textInfoAboutMyCourse;
+    public TextArea textInfoAboutAllCourse;
 
     @FXML
     protected void initialize() {
@@ -294,12 +300,43 @@ public class TeacherController implements DefaultController {
         paneAllCourses.setVisible(false);
         paneMyCourses.setVisible(false);
         paneMyStudents.setVisible(false);
+        paneMoreInfoAboutCourse.setVisible(false);
+        paneMoreInfoAboutMyCourse.setVisible(false);
         imageBack.setVisible(true);
     }
 
-    public void actionAddMoreInfoAboutCourse(ActionEvent actionEvent) {
+    public void actionMoreInfoAboutMyCourse(ActionEvent actionEvent) {
+        paneMoreInfoAboutMyCourse.setVisible(true);
+        Course course = tableMyCourses.getSelectionModel().getSelectedItem();
+        String text = "Название: " + course.getNameOfCourse() + "\n" +
+                "Преподаватель: " + course.getTeacher()  + "\n" +
+                "Язык: "  + course.getLanguage() + "\n" +
+                "Уровень: "  + course.getLevel() + "\n" +
+                "Дата начала: "  + course.getStartDate() + "\n" +
+                "Стоимость: "  + course.getCost() + " BYN.";
+        textInfoAboutMyCourse.setText(text);
+        paneMoreInfoAboutMyCourse.setVisible(true);
     }
 
     public void actionShowMoreInfoAboutCourse(ActionEvent actionEvent) {
+        Course course = tableAllCourses.getSelectionModel().getSelectedItem();
+        String text = "Название: " + course.getNameOfCourse() + "\n" +
+                "Преподаватель: " + course.getTeacher()  + "\n" +
+                "Язык: "  + course.getLanguage() + "\n" +
+                "Уровень: "  + course.getLevel() + "\n" +
+                "Дата начала: "  + course.getStartDate() + "\n" +
+                "Стоимость: "  + course.getCost() + " BYN.";
+        textInfoAboutAllCourse.setText(text);
+        paneMoreInfoAboutCourse.setVisible(true);
+    }
+
+    public void actionCloseMoreInfoAboutCourse(ActionEvent actionEvent) {
+        paneMoreInfoAboutCourse.setVisible(false);
+        textInfoAboutAllCourse.setText("");
+    }
+
+    public void actionSubmitAddMoreInfoAboutCourse(ActionEvent actionEvent) {
+        paneMoreInfoAboutMyCourse.setVisible(false);
+        textInfoAboutMyCourse.setText("");
     }
 }

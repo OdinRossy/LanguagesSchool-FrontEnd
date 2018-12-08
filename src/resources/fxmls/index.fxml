@@ -42,11 +42,6 @@
                   <Cursor fx:constant="HAND" />
                </cursor>
             </ImageView>
-            <Label fx:id="labelTest" alignment="CENTER" layoutX="50.0" layoutY="25.0" opacity="0.5" prefHeight="25.0" prefWidth="400.0" text="Label">
-               <font>
-                  <Font size="14.0" />
-               </font>
-            </Label>
          </children></AnchorPane>
       <Pane fx:id="paneSignIn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
          <HBox.margin>

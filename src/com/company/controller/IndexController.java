@@ -33,7 +33,6 @@ public class IndexController implements DefaultController {
     public JFXRadioButton radioIsStudent;
     public JFXButton buttonChoiceSignIn;
     public JFXButton buttonChoiceSignUp;
-//    public Label labelTest;
 
     public ImageView imageBack;
     public ImageView imageBackground;
@@ -72,14 +71,12 @@ public class IndexController implements DefaultController {
     public void actionShowMainPane() {
         actionChangeBackground();
         hidePanes();
-//        labelTest.setText("");
         imageBack.setVisible(false);
         paneMain.setVisible(true);
         paneImage.setVisible(true);
     }
 
     public void actionChoiceSignIn() {
-//        labelTest.setText("Войти как " + (isStudent? "студент" : "перподаватель"));
         hidePanes();
         paneSignIn.setVisible(true);
         imageBack.setVisible(true);
@@ -90,7 +87,6 @@ public class IndexController implements DefaultController {
         setDefaultDate(dateBirthdaySignUpStudent);
         actionChangeBackground();
         hidePanes();
-//        labelTest.setText("Зарегистрироваться как " + (isStudent? "студент" : "перподаватель"));
         paneImage.setVisible(true);
         paneSignUpStudent.setVisible(isStudent);
 //        paneSignUpTeacher.setVisible(!isStudent);
@@ -117,7 +113,6 @@ public class IndexController implements DefaultController {
                 signUpAsStudent(actionEvent, student);
 
             } else {
-//                labelTest.setText("Поля введены некорректно.");
 
             }
 
@@ -140,7 +135,6 @@ public class IndexController implements DefaultController {
                 signInAsTeacher(actionEvent, new Teacher(username,password));
             }
         } else {
-//            labelTest.setText("Поля введены некорректно.");
         }
         clearTexts();
     }
@@ -158,13 +152,12 @@ public class IndexController implements DefaultController {
                 actionShowMainPane();
 
             } else {
-//                labelTest.setText(response.getMessage());
                 Node[] nodes = {textUsername, textPassword};
                 NodeWorker.animateNodes(nodes);
             }
         } else {
-//            labelTest.setText("Вы не подключены к серверу.");
-//            NodeWorker.animateNode(labelTest);
+            Node[] nodes = {textUsername, textPassword};
+            NodeWorker.animateNodes(nodes);
         }
     }
 
@@ -178,10 +171,8 @@ public class IndexController implements DefaultController {
                 signInAsStudent(actionEvent, student);
             } else {
                 NodeWorker.animateNode(textUsernameStudentSignUp);
-//                labelTest.setText(response.getMessage());
             }
         } else {
-//            labelTest.setText("Вы не подключены к серверу.");
         }
     }
 
@@ -199,16 +190,12 @@ public class IndexController implements DefaultController {
                 actionShowMainPane();
 
             } else {
-//                labelTest.setText(response.getMessage());
                 paneSignIn.setVisible(true);
                 paneImage.setVisible(true);
                 System.out.println("Is success : " + response.isSuccess());
                 Node[] nodes = {textUsername, textPassword};
                 NodeWorker.animateNodes(nodes);
             }
-        } else {
-//            labelTest.setText("Вы не подключены к серверу.");
-//            NodeWorker.animateNode(labelTest);
         }
     }
 
@@ -218,6 +205,11 @@ public class IndexController implements DefaultController {
 
     public void changeChoiceIsStudent() {
         isStudent = radioIsStudent.isSelected();
+        if (!isStudent) {
+            buttonChoiceSignUp.setVisible(false);
+        } else {
+            buttonChoiceSignUp.setVisible(true);
+        }
     }
 
     private void hidePanes() {
