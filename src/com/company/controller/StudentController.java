@@ -1,11 +1,15 @@
 package com.company.controller;
 
+import com.company.model.abstraction.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
+import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
+import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
 import com.company.model.*;
 import com.company.model.buffers.CoursesArrayList;
@@ -103,6 +107,10 @@ public class StudentController implements DefaultController {
     public TableColumn columnMyTeachersMiddleName;
     public TableColumn columnMyTeachersBirthdate;
     public TableColumn columnMyTeachersLanguage;
+    public Pane paneWriteReport;
+    public TextArea textReport;
+    public AnchorPane paneMoreInfoAboutCourse;
+    public TextArea textInfoAboutAllCourse;
 
     @FXML
     protected void initialize() {
@@ -280,6 +288,16 @@ public class StudentController implements DefaultController {
     }
 
     public void actionMoreInfoAboutCourse() {
+        paneMoreInfoAboutCourse.setVisible(true);
+        Course course = tableMyCourses.getSelectionModel().getSelectedItem();
+        String text = "Название: " + course.getNameOfCourse() + "\n" +
+                "Преподаватель: " + course.getTeacher()  + "\n" +
+                "Язык: "  + course.getLanguage() + "\n" +
+                "Уровень: "  + course.getLevel() + "\n" +
+                "Дата начала: "  + course.getStartDate() + "\n" +
+                "Стоимость: "  + course.getCost() + " BYN.";
+        textInfoAboutAllCourse.setText(text);
+        paneMoreInfoAboutCourse.setVisible(true);
     }
 
     public void actionSubmitDeleteCourse() {
@@ -317,21 +335,6 @@ public class StudentController implements DefaultController {
         labelTitle.setText("Удалить аккаунт");
         hidePanes();
         paneDeleteAccount.setVisible(true);
-    }
-
-    public void actionSearchCourse() {
-        labelTitle.setText("Поиск курса");
-        hidePanes();
-    }
-
-    public void actionSearchTeacher() {
-        labelTitle.setText("Поиск преподавателя");
-        hidePanes();
-    }
-
-    public void actionWriteToAdmin() {
-        labelTitle.setText("Написать в службу поддержки");
-        hidePanes();
     }
 
     public void actionLogOut() {
@@ -386,6 +389,38 @@ public class StudentController implements DefaultController {
         paneMyCourses.setVisible(false);
         paneAllTeachers.setVisible(false);
         paneMyTeachers.setVisible(false);
+        paneWriteReport.setVisible(false);
         imageBack.setVisible(true);
+        paneMoreInfoAboutCourse.setVisible(false);
+    }
+
+    public void actionWriteReport(ActionEvent actionEvent) {
+        paneWriteReport.setVisible(true);
+    }
+
+    public void actionSubmitReport(ActionEvent actionEvent) {
+        TextInputControl[] nodes = {textReport};
+        if (NodeWorker.textValidator(nodes)){
+            String text = textReport.getText();
+            Student student = (Student) CurrentUser.getUser();
+            Request request = new Request(Request.POST, new HelpStudent(student, text));
+
+            Response response = messageSender.sendRequestToServer(request);
+
+            if (response.isSuccess()) {
+                labelTitle.setText("Благодарим за сообщение!");
+                paneWriteReport.setVisible(false);
+                textReport.setText("");
+            } else {
+                labelTitle.setText("Ваше сообщение не было отправлено");
+                paneWriteReport.setVisible(false);
+            }
+        }
+
+    }
+
+    public void actionCloseMoreInfoAboutCourse(ActionEvent actionEvent) {
+        paneMoreInfoAboutCourse.setVisible(false);
+        textInfoAboutAllCourse.setText("");
     }
 }

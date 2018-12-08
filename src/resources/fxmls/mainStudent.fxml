@@ -11,6 +11,7 @@
 <?import javafx.scene.control.PasswordField?>
 <?import javafx.scene.control.TableColumn?>
 <?import javafx.scene.control.TableView?>
+<?import javafx.scene.control.TextArea?>
 <?import javafx.scene.control.TextField?>
 <?import javafx.scene.control.ToggleButton?>
 <?import javafx.scene.control.ToggleGroup?>
@@ -53,15 +54,6 @@
             <items>
               <MenuItem fx:id="menuItemShowMyCourses" mnemonicParsing="false" onAction="#actionShowMyCourses" text="Показать мои курсы" />
                   <MenuItem fx:id="menuItemShowAllCourses" mnemonicParsing="false" onAction="#actionShowAllCourses" text="Показать все курсы" />
-                  <MenuItem fx:id="menuItemSearchCourse" mnemonicParsing="false" onAction="#actionSearchCourse" text="Найти курс">
-                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/search.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
             </items>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
@@ -75,15 +67,6 @@
                <items>
                   <MenuItem fx:id="menuItemShowMyTeachers" mnemonicParsing="false" onAction="#actionShowMyTeachers" text="Показать моих преподавателей" />
                   <MenuItem fx:id="menuItemShowAllTeachers" mnemonicParsing="false" onAction="#actionShowAllTeachers" text="Показать всех преподавателей" />
-                  <MenuItem fx:id="menuItemSearchTeacher" mnemonicParsing="false" onAction="#actionSearchTeacher" text="Найти преподавателя">
-                     <graphic>
-                        <ImageView fitHeight="15.0" fitWidth="15.0" pickOnBounds="true" preserveRatio="true">
-                           <image>
-                              <Image url="@../assets/search.png" />
-                           </image>
-                        </ImageView>
-                     </graphic>
-                  </MenuItem>
                </items>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
@@ -95,7 +78,7 @@
             </Menu>
           <Menu mnemonicParsing="false" text="Помощь">
             <items>
-              <MenuItem fx:id="menuItemWriteToAdmin" mnemonicParsing="false" onAction="#actionWriteToAdmin" text="Написать в службу поддержки" />
+              <MenuItem fx:id="menuItemWriteToAdmin" mnemonicParsing="false" onAction="#actionWriteReport" text="Написать в службу поддержки" />
             </items>
                <graphic>
                   <ImageView fitHeight="15.0" fitWidth="15.0" opacity="0.7" pickOnBounds="true" preserveRatio="true">
@@ -176,7 +159,7 @@
                         <Insets top="22.0" />
                      </padding>
                   </HBox>
-                  <Pane fx:id="paneAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;">
+                  <Pane fx:id="paneAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;" visible="false">
                      <children>
                         <AnchorPane layoutX="850.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="100.0" prefWidth="100.0">
                            <children>
@@ -600,7 +583,7 @@
                         <Insets left="25.0" right="25.0" top="-450.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="paneEditAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;" visible="false">
+                  <Pane fx:id="paneEditAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;">
                      <children>
                         <VBox layoutX="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0">
                            <children>
@@ -777,6 +760,59 @@
                         <Insets left="25.0" right="25.0" top="-450.0" />
                      </FlowPane.margin>
                   </Pane>
+                  <Pane fx:id="paneWriteReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.8" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #fff; -fx-background-radius: 25;">
+                     <children>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0">
+                           <children>
+                              <TextArea fx:id="textReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="275.0" prefWidth="450.0" wrapText="true" />
+                              <Button fx:id="buttonSubmitReport" defaultButton="true" mnemonicParsing="false" onAction="#actionSubmitReport" prefHeight="30.0" prefWidth="200.0" style="-fx-background-radius: 7;" text="Подтвердить">
+                                 <VBox.margin>
+                                    <Insets left="300.0" top="12.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <FlowPane.margin>
+                        <Insets left="250.0" right="25.0" top="-500.0" />
+                     </FlowPane.margin>
+                     <effect>
+                        <DropShadow color="#00000066" height="150.0" radius="74.5" width="150.0" />
+                     </effect>
+                  </Pane>
+                  <AnchorPane fx:id="paneMoreInfoAboutCourse" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.9" prefHeight="400.0" prefWidth="600.0" style="-fx-background-color: #ffffff; -fx-background-radius: 15;" visible="false">
+                     <children>
+                        <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="600.0">
+                           <children>
+                              <TextArea fx:id="textInfoAboutAllCourse" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="300.0" prefWidth="550.0" style="-fx-border-radius: 5; -fx-background-radius: 5; -fx-border-color: #ccc;">
+                                 <VBox.margin>
+                                    <Insets />
+                                 </VBox.margin>
+                              </TextArea>
+                              <Button defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionCloseMoreInfoAboutCourse" opacity="0.8" prefHeight="30.0" prefWidth="80.0" text="Закрыть">
+                                 <VBox.margin>
+                                    <Insets left="470.0" top="20.0" />
+                                 </VBox.margin>
+                              </Button>
+                           </children>
+                           <padding>
+                              <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+                           </padding>
+                        </VBox>
+                     </children>
+                     <padding>
+                        <Insets bottom="50.0" left="50.0" right="50.0" top="50.0" />
+                     </padding>
+                     <effect>
+                        <DropShadow color="#0000004d" height="150.0" radius="74.5" width="150.0" />
+                     </effect>
+                     <FlowPane.margin>
+                        <Insets left="200.0" top="-500.0" />
+                     </FlowPane.margin>
+                  </AnchorPane>
                </children>
             </FlowPane>
          </children>
