@@ -1,0 +1,327 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import com.jfoenix.controls.JFXButton?>
+<?import com.jfoenix.controls.JFXDatePicker?>
+<?import com.jfoenix.controls.JFXPasswordField?>
+<?import com.jfoenix.controls.JFXRadioButton?>
+<?import com.jfoenix.controls.JFXTextField?>
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.Cursor?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.RadioButton?>
+<?import javafx.scene.control.ToggleGroup?>
+<?import javafx.scene.effect.ColorAdjust?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.HBox?>
+<?import javafx.scene.layout.Pane?>
+<?import javafx.scene.layout.VBox?>
+<?import javafx.scene.paint.LinearGradient?>
+<?import javafx.scene.paint.Stop?>
+<?import javafx.scene.text.Font?>
+
+<HBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="900.0" xmlns="http://javafx.com/javafx/10.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="com.company.controller.IndexController">
+   <children>
+      <AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="550.0" style="-fx-background-color: #333;">
+         <children>
+            <Pane fx:id="paneImage" visible="false">
+               <children>
+                  <ImageView fx:id="imageBackground" fitHeight="500.0" fitWidth="550.0" onMouseClicked="#actionChangeBackground" pickOnBounds="true" preserveRatio="true">
+                     <image>
+                        <Image url="@../assets/backgrounds/1.png" />
+                     </image>
+                  </ImageView>
+               </children>
+            </Pane>
+            <ImageView fx:id="imageBack" fitHeight="35.0" fitWidth="35.0" layoutX="25.0" layoutY="25.0" onMouseClicked="#actionShowMainPane" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@../assets/back1.png" />
+               </image>
+               <cursor>
+                  <Cursor fx:constant="HAND" />
+               </cursor>
+            </ImageView>
+            <Label fx:id="labelTest" alignment="CENTER" layoutX="50.0" layoutY="25.0" opacity="0.5" prefHeight="25.0" prefWidth="400.0" text="Label">
+               <font>
+                  <Font size="14.0" />
+               </font>
+            </Label>
+         </children></AnchorPane>
+      <Pane fx:id="paneSignIn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity">
+         <HBox.margin>
+            <Insets />
+         </HBox.margin>
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #333333;">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="355.0" prefWidth="300.0" style="-fx-background-color: #444; -fx-background-radius: 15;">
+                     <children>
+                        <Label alignment="CENTER" contentDisplay="CENTER" prefHeight="30.0" prefWidth="225.0" text="Добро пожаловать!" textFill="#eeeeee">
+                           <font>
+                              <Font size="22.0" />
+                           </font>
+                        </Label>
+                        <JFXTextField fx:id="textUsername" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="225.0" promptText="Эл. почта:" unFocusColor="#eeeeee">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </JFXTextField>
+                        <JFXPasswordField fx:id="textPassword" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="40.0" prefWidth="225.0" promptText="Пароль:" unFocusColor="#eeeeee">
+                           <font>
+                              <Font size="14.0" />
+                           </font>
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </JFXPasswordField>
+                        <JFXButton fx:id="buttonSubmitSignIn" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#actionSubmitSignIn" onMouseEntered="#actionSubmitSignInMouseEntered" onMouseExited="#actionSubmitSignInMouseExited" prefHeight="50.0" prefWidth="225.0" style="-fx-border-radius: 7; -fx-border-width: 2; -fx-border-color: #333;" text="Войти" textFill="#eeeeee">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#ff9000" />
+                                    <Stop color="#dd00ff" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets top="40.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="50.0" left="37.0" right="37.0" top="50.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+            </VBox>
+         </children>
+      </Pane>
+      <Pane fx:id="paneMain" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" visible="false">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #333333;">
+               <children>
+                  <VBox prefWidth="300.0" style="-fx-background-color: #444; -fx-background-radius: 15;">
+                     <children>
+                        <JFXRadioButton focusTraversable="false" onAction="#changeChoiceIsStudent" text="Преподаватель" textFill="WHITE">
+                           <toggleGroup>
+                              <ToggleGroup fx:id="toggleAccessLevel" />
+                           </toggleGroup>
+                        </JFXRadioButton>
+                        <JFXRadioButton fx:id="radioIsStudent" focusTraversable="false" onAction="#changeChoiceIsStudent" prefWidth="134.0" selected="true" text="Студент" textFill="WHITE" toggleGroup="$toggleAccessLevel">
+                           <VBox.margin>
+                              <Insets top="30.0" />
+                           </VBox.margin>
+                           <opaqueInsets>
+                              <Insets />
+                           </opaqueInsets>
+                        </JFXRadioButton>
+                     </children>
+                     <VBox.margin>
+                        <Insets bottom="30.0" />
+                     </VBox.margin>
+                     <padding>
+                        <Insets bottom="30.0" left="37.0" right="37.0" top="30.0" />
+                     </padding>
+                  </VBox>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefWidth="300.0" style="-fx-background-color: #444; -fx-background-radius: 15;">
+                     <children>
+                        <JFXButton fx:id="buttonChoiceSignIn" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#actionChoiceSignIn" onMouseEntered="#actionChoiceSignInMouseEntered" onMouseExited="#actionChoiceSignInMouseExited" prefHeight="50.0" prefWidth="225.0" style="-fx-border-color: #333; -fx-border-width: 2; -fx-border-radius: 7; -fx-background-radius: 7;" text="Войти" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#ff9000" />
+                                    <Stop color="#dd00ff" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                        </JFXButton>
+                        <JFXButton fx:id="buttonChoiceSignUp" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#actionChoiceSignUp" onMouseEntered="#actionButtonChoiceSignUpMouseEntered" onMouseExited="#actionButtonChoiceSignUpMouseExited" prefHeight="50.0" prefWidth="225.0" text="Зарегистрироваться" textFill="WHITE">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#9999ff" />
+                                    <Stop color="#9999ff" offset="0.0074487895716946" />
+                                    <Stop color="#d300ff" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="30.0" left="37.0" right="37.0" top="30.0" />
+                     </padding>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+            </VBox>
+         </children>
+         <HBox.margin>
+            <Insets left="-350.0" />
+         </HBox.margin>
+      </Pane>
+      <Pane fx:id="paneSignUpStudent" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" visible="false">
+         <children>
+            <VBox alignment="CENTER" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="500.0" prefWidth="350.0" style="-fx-background-color: #333333;">
+               <children>
+                  <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="300.0" style="-fx-background-color: #444; -fx-background-radius: 15;">
+                     <children>
+                        <JFXTextField fx:id="textLastNameStudentSignUp" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Фамилия:" unFocusColor="#eeeeee">
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <font>
+                              <Font size="12.5" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="textFirstNameStudentSignUp" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Имя:" unFocusColor="#eeeeee">
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="12.5" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="textMiddleNameStudentSignUp" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Отчество:" unFocusColor="#eeeeee">
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="12.5" />
+                           </font>
+                        </JFXTextField>
+                        <JFXTextField fx:id="textUsernameStudentSignUp" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Эл. почта:" unFocusColor="#eeeeee">
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="12.5" />
+                           </font>
+                        </JFXTextField>
+                        <JFXPasswordField fx:id="textPasswordStudentSignUp" focusColor="WHITE" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Придумайте пароль:" unFocusColor="#eeeeee">
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                           <font>
+                              <Font size="12.5" />
+                           </font>
+                        </JFXPasswordField>
+                        <JFXDatePicker fx:id="dateBirthdaySignUpStudent" editable="false" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="30.0" prefWidth="225.0" promptText="Дата рождения:">
+                           <effect>
+                              <ColorAdjust brightness="0.5" />
+                           </effect>
+                           <defaultColor>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#9999ff" />
+                                    <Stop color="#dd00ff" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </defaultColor>
+                           <VBox.margin>
+                              <Insets top="15.0" />
+                           </VBox.margin>
+                        </JFXDatePicker>
+                        <HBox>
+                           <children>
+                              <RadioButton fx:id="toggleIsMaleSignUpStudent" mnemonicParsing="false" selected="true" text="Мужчина" textFill="#eeeeee">
+                                 <toggleGroup>
+                                    <ToggleGroup fx:id="toggleGender" />
+                                 </toggleGroup>
+                              </RadioButton>
+                              <RadioButton mnemonicParsing="false" text="Женщина" textFill="#eeeeee" toggleGroup="$toggleGender">
+                                 <HBox.margin>
+                                    <Insets left="35.0" />
+                                 </HBox.margin>
+                              </RadioButton>
+                           </children>
+                           <VBox.margin>
+                              <Insets top="25.0" />
+                           </VBox.margin>
+                        </HBox>
+                        <JFXButton fx:id="buttonSubmitSignUpStudent" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" onAction="#actionSubmitSignUp" prefHeight="50.0" prefWidth="225.0" style="-fx-border-radius: 7; -fx-border-width: 2; -fx-border-color: #333;" text="Зарегистрироваться" textFill="#eeeeee">
+                           <font>
+                              <Font name="System Bold" size="14.0" />
+                           </font>
+                           <ripplerFill>
+                              <LinearGradient endX="1.0" endY="1.0">
+                                 <stops>
+                                    <Stop color="#9999ff" />
+                                    <Stop color="#d300ff" offset="1.0" />
+                                 </stops>
+                              </LinearGradient>
+                           </ripplerFill>
+                           <cursor>
+                              <Cursor fx:constant="HAND" />
+                           </cursor>
+                           <VBox.margin>
+                              <Insets top="20.0" />
+                           </VBox.margin>
+                        </JFXButton>
+                     </children>
+                     <padding>
+                        <Insets bottom="50.0" left="37.0" right="37.0" top="35.0" />
+                     </padding>
+                     <VBox.margin>
+                        <Insets />
+                     </VBox.margin>
+                  </VBox>
+               </children>
+               <padding>
+                  <Insets bottom="25.0" left="25.0" right="25.0" top="25.0" />
+               </padding>
+            </VBox>
+         </children>
+         <HBox.margin>
+            <Insets left="-350.0" />
+         </HBox.margin>
+      </Pane>
+   </children>
+</HBox>
