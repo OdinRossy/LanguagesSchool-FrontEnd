@@ -236,6 +236,7 @@ public class StudentController implements DefaultController {
             String password = textPassword.getText();
             boolean isMale = toggleMale.isSelected();
 
+
             LocalDate localDate = dateBirthdate.getValue();
             Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
             Date birthdate = Date.from(instant);
@@ -366,7 +367,7 @@ public class StudentController implements DefaultController {
         labelLastName.setText(CurrentUser.getUser().getLastName());
         labelUsername.setText(CurrentUser.getUser().getUsername());
         labelPassword.setText(CurrentUser.getUser().getPassword());
-        labelBirthdate.setText((String) CurrentUser.getUser().getBirthdate("String"));
+        labelBirthdate.setText(CurrentUser.getUser().getBirthdate().toString());
         labelGender.setText(CurrentUser.getUser().isMale()? "Мужской" : "Женский");
 
         textFirstName.setText(CurrentUser.getUser().getFirstName());
@@ -374,7 +375,7 @@ public class StudentController implements DefaultController {
         textLastName.setText(CurrentUser.getUser().getLastName());
         textUsername.setText(CurrentUser.getUser().getUsername());
         textPassword.setText(CurrentUser.getUser().getPassword());
-        Date date = (Date) CurrentUser.getUser().getBirthdate("Date");
+        Date date = CurrentUser.getUser().getBirthdate();
         LocalDate localDate = LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
         dateBirthdate.setValue(localDate);
         toggleMale.setSelected(CurrentUser.getUser().isMale());

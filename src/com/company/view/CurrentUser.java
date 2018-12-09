@@ -20,7 +20,7 @@ public class CurrentUser {
         CurrentUser.user.setLastName(user.getLastName());
         CurrentUser.user.setUsername(user.getUsername());
         CurrentUser.user.setPassword(user.getPassword());
-        CurrentUser.user.setBirthdate((String) user.getBirthdate("String"));
+        CurrentUser.user.setBirthdate(user.getBirthdate());
         CurrentUser.user.setMale(user.isMale());
         System.out.println("Update user: " + CurrentUser.user.toString());
     }

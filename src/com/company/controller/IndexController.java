@@ -20,10 +20,14 @@ import com.company.view.NodeWorker;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
+import java.text.DateFormat;
+import java.text.ParseException;
+import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
+import java.util.Locale;
 
 public class IndexController implements DefaultController {
 
@@ -93,7 +97,7 @@ public class IndexController implements DefaultController {
         imageBack.setVisible(true);
     }
 
-    public void actionSubmitSignUp(ActionEvent actionEvent) {
+    public void actionSubmitSignUp(ActionEvent actionEvent) throws ParseException {
         if (isStudent) {
             TextInputControl[] texts = {textFirstNameStudentSignUp, textLastNameStudentSignUp,
                     textMiddleNameStudentSignUp,textUsernameStudentSignUp, textPasswordStudentSignUp};
@@ -103,9 +107,11 @@ public class IndexController implements DefaultController {
                 String lastName = textLastNameStudentSignUp.getText();
                 String middleName = textMiddleNameStudentSignUp.getText();
                 String username = textUsernameStudentSignUp.getText();
+
                 LocalDate localDate = dateBirthdaySignUpStudent.getValue();
                 Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
                 Date birthdate = Date.from(instant);
+
                 String password = textPasswordStudentSignUp.getText();
                 boolean isMale = toggleIsMaleSignUpStudent.isSelected();
 

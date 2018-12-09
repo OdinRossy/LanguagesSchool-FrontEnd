@@ -276,7 +276,7 @@ public class TeacherController implements DefaultController {
         labelLastName.setText(teacher.getLastName());
         labelUsername.setText(teacher.getUsername());
         labelPassword.setText(teacher.getPassword());
-        labelBirthdate.setText((String) teacher.getBirthdate("String"));
+        labelBirthdate.setText(teacher.getBirthdate().toString());
         labelGender.setText(teacher.isMale()? "Мужской" : "Женский");
         labelSalary.setText(String.valueOf(teacher.getSalary()));
         labelLanguage.setText(teacher.getLanguage());
@@ -286,7 +286,7 @@ public class TeacherController implements DefaultController {
         textLastName.setText(CurrentUser.getUser().getLastName());
         textUsername.setText(CurrentUser.getUser().getUsername());
         textPassword.setText(CurrentUser.getUser().getPassword());
-        Date date = (Date) CurrentUser.getUser().getBirthdate("Date");
+        Date date = CurrentUser.getUser().getBirthdate();
         LocalDate localDate = LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
         dateBirthdate.setValue(localDate);
         toggleMale.setSelected(CurrentUser.getUser().isMale());
