@@ -730,7 +730,7 @@
                                 <Insets left="25.0" right="25.0" top="-450.0" />
                             </FlowPane.margin>
                         </Pane>
-                        <Pane fx:id="paneMyStudents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;" visible="false">
+                        <Pane fx:id="paneMyStudents" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;">
                             <children>
                                 <VBox layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="900.0" style="-fx-background-radius: 15; -fx-background-color: #dfdfdf;">
                                     <children>
@@ -739,18 +739,35 @@
                                                 <Insets />
                                             </VBox.margin>
                                             <children>
-                                                <TableView fx:id="tableMyStudents" prefHeight="350.0" prefWidth="850.0">
-                                                    <columns>
-                                                        <TableColumn fx:id="columnMyStudentsCourse" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Курс" />
-                                                        <TableColumn fx:id="columnMyStudentsLastName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Фамилия" />
-                                                        <TableColumn fx:id="columnMyStudentsFirstName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Имя" />
-                                                        <TableColumn fx:id="columnMyStudentsMiddleName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Отчество" />
-                                                        <TableColumn fx:id="columnMyStudentsBirthdate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата рождения" />
-                                                    </columns>
-                                                    <columnResizePolicy>
-                                                        <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
-                                                    </columnResizePolicy>
-                                                </TableView>
+                                    <VBox>
+                                       <children>
+                                                      <TableView fx:id="tableMyStudents" prefHeight="325.0" prefWidth="850.0">
+                                                          <columns>
+                                                              <TableColumn fx:id="columnMyStudentsCourse" maxWidth="250.0" minWidth="250.0" prefWidth="250.0" text="Курс" />
+                                                              <TableColumn fx:id="columnMyStudentsLastName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Фамилия" />
+                                                              <TableColumn fx:id="columnMyStudentsFirstName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Имя" />
+                                                              <TableColumn fx:id="columnMyStudentsMiddleName" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Отчество" />
+                                                              <TableColumn fx:id="columnMyStudentsBirthdate" maxWidth="150.0" minWidth="150.0" prefWidth="150.0" text="Дата рождения" />
+                                                          </columns>
+                                                          <columnResizePolicy>
+                                                              <TableView fx:constant="CONSTRAINED_RESIZE_POLICY" />
+                                                          </columnResizePolicy>
+                                                      </TableView>
+                                          <HBox>
+                                             <children>
+                                                <Label prefHeight="20.0" prefWidth="200.0" text="Общее количество студентов:" />
+                                                <Label fx:id="labelCountOfMyStudents" prefHeight="20.0" prefWidth="60.0" text="0">
+                                                   <HBox.margin>
+                                                      <Insets left="10.0" />
+                                                   </HBox.margin>
+                                                </Label>
+                                             </children>
+                                             <VBox.margin>
+                                                <Insets top="10.0" />
+                                             </VBox.margin>
+                                          </HBox>
+                                       </children>
+                                    </VBox>
                                             </children>
                                         </Pane>
                                     </children>
@@ -826,7 +843,7 @@
                         <Insets left="200.0" top="-500.0" />
                      </FlowPane.margin>
                   </AnchorPane>
-                  <Pane fx:id="paneMyStatistics" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;">
+                  <Pane fx:id="paneMyStatistics" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;" visible="false">
                      <children>
                         <VBox layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="900.0" style="-fx-background-radius: 15; -fx-background-color: #dfdfdf;">
                            <children>

@@ -44,6 +44,7 @@ public class TeacherController implements DefaultController {
     public Label labelPassword;
     public Label labelLanguage;
     public Label labelSalary;
+    public Label labelCountOfMyStudents;
     public Pane paneEditAccount;
     public Pane paneDeleteAccount;
     public PasswordField textPasswordToDeleteAccount;
@@ -180,18 +181,6 @@ public class TeacherController implements DefaultController {
         hidePanes();
         paneMyStatistics.setVisible(true);
 
-//        TeacherStatistics teacherStatistics = new TeacherStatistics();
-//        teacherStatistics.setStudentsCount(1);
-//        teacherStatistics.setNameOfCourse("English(" + teacherStatistics.getStudentsCount() + ")");
-//
-//        TeacherStatistics teacherStatistics1 = new TeacherStatistics();
-//        teacherStatistics1.setStudentsCount(5);
-//        teacherStatistics1.setNameOfCourse("Russian(" + teacherStatistics1.getStudentsCount() + ")");
-//
-//        ArrayList<TeacherStatistics> arrayList = new ArrayList<>();
-//        arrayList.add(teacherStatistics);
-//        arrayList.add(teacherStatistics1);
-
         Request request = new Request(Request.GET,new TeacherStatistics(CurrentUser.getUser().getUsername()));
         Response response = messageSender.sendRequestToServer(request);
 
@@ -202,14 +191,7 @@ public class TeacherController implements DefaultController {
             pieChartData.add(i,new PieChart.Data(teacherStatisticsArrayList.getTeacherStatisticsArrayList().get(i).getNameOfCourse(),
                     teacherStatisticsArrayList.getTeacherStatisticsArrayList().get(i).getStudentsCount()));
         }
-//                FXCollections.observableArrayList(
-//                        new PieChart.Data("Grapefruit", 13),
-//                        new PieChart.Data("Oranges", 25),
-//                        new PieChart.Data("Plums", 10),
-//                        new PieChart.Data("Pears", 22),
-//                        new PieChart.Data("Apples", 30));
         pieMyStatistics.setData(pieChartData);
-//        final PieChart chart = new PieChart(pieChartData);
         pieMyStatistics.setTitle("Статистика по моим курсам");
     }
 
@@ -234,6 +216,11 @@ public class TeacherController implements DefaultController {
 //            columnMyCourseCost.setCellValueFactory(new PropertyValueFactory<Student, Double>("cost"));
             ObservableList<Student> courseObservableList = FXCollections.observableArrayList(studentsArrayList.getStudentArrayList());
             tableMyStudents.setItems(courseObservableList);
+            request = new Request(Request.GET,new Student(), "count_by_username:" + CurrentUser.getUser().getUsername());
+            response = messageSender.sendRequestToServer(request);
+
+            int countOfMyStudents = Integer.parseInt(response.getMessage());
+            labelCountOfMyStudents.setText(String.valueOf(countOfMyStudents));
         } else {
             labelTitle.setText(response.getMessage());
         }
