@@ -436,6 +436,11 @@
                                           <Font size="15.0" />
                                        </font>
                                     </Label>
+                                    <Button fx:id="buttonMoreInfoAboutCourse" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionMoreInfoAboutCourse" prefHeight="30.0" prefWidth="250.0" style="-fx-background-radius: 7;" text="Информация">
+                                       <HBox.margin>
+                                          <Insets left="330.0" />
+                                       </HBox.margin>
+                                    </Button>
                                     <Button fx:id="buttonSubmitAddCourse" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionSubmitAddCourse" prefHeight="30.0" prefWidth="250.0" style="-fx-background-radius: 7;" text="Записаться">
                                        <HBox.margin>
                                           <Insets left="20.0" />
@@ -459,7 +464,7 @@
                         <Insets left="25.0" right="25.0" top="-450.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="paneMyCourses" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;" visible="false">
+                  <Pane fx:id="paneMyCourses" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;">
                      <children>
                         <VBox layoutX="25.0" layoutY="25.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="400.0" prefWidth="900.0" style="-fx-background-radius: 15; -fx-background-color: #dfdfdf;">
                            <children>
@@ -483,14 +488,34 @@
                               </Pane>
                               <HBox>
                                  <children>
-                                    <Button fx:id="buttonMoreInfoAboutCourse" defaultButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionMoreInfoAboutCourse" prefHeight="30.0" prefWidth="250.0" style="-fx-background-radius: 7;" text="Информация">
-                                       <HBox.margin>
-                                          <Insets left="330.0" />
-                                       </HBox.margin>
-                                    </Button>
+                                    <Label prefHeight="30.0" prefWidth="100.0" text="Количество:" textFill="#656565">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelCountOfMyCourse" prefHeight="30.0" prefWidth="50.0" text="0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="30.0" prefWidth="140.0" text="Общая стоимость:" textFill="#656565">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
+                                    <Label fx:id="labelSumOfMyCourse" alignment="CENTER" prefHeight="30.0" prefWidth="100.0" text="0.0">
+                                       <font>
+                                          <Font name="System Bold" size="16.0" />
+                                       </font>
+                                    </Label>
+                                    <Label prefHeight="30.0" prefWidth="140.0" text="BYN." textFill="#656565">
+                                       <font>
+                                          <Font size="14.0" />
+                                       </font>
+                                    </Label>
                                     <Button fx:id="buttonSubmitDeleteCourse" cancelButton="true" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" mnemonicParsing="false" onAction="#actionSubmitDeleteCourse" prefHeight="30.0" prefWidth="250.0" style="-fx-background-radius: 7;" text="Отказаться от курса">
                                        <HBox.margin>
-                                          <Insets left="20.0" />
+                                          <Insets left="75.0" />
                                        </HBox.margin>
                                     </Button>
                                  </children>
@@ -583,7 +608,7 @@
                         <Insets left="25.0" right="25.0" top="-450.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="paneEditAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;">
+                  <Pane fx:id="paneEditAccount" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="950.0" style="-fx-background-color: #eee; -fx-background-radius: 25;" visible="false">
                      <children>
                         <VBox layoutX="20.0" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="450.0" prefWidth="550.0">
                            <children>
@@ -760,7 +785,7 @@
                         <Insets left="25.0" right="25.0" top="-450.0" />
                      </FlowPane.margin>
                   </Pane>
-                  <Pane fx:id="paneWriteReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.8" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #fff; -fx-background-radius: 25;">
+                  <Pane fx:id="paneWriteReport" maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" opacity="0.8" prefHeight="350.0" prefWidth="500.0" style="-fx-background-color: #fff; -fx-background-radius: 25;" visible="false">
                      <children>
                         <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="350.0" prefWidth="500.0">
                            <children>

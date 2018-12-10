@@ -108,6 +108,8 @@ public class StudentController implements DefaultController {
     public TextArea textReport;
     public AnchorPane paneMoreInfoAboutCourse;
     public TextArea textInfoAboutAllCourse;
+    public Label labelCountOfMyCourse;
+    public Label labelSumOfMyCourse;
 
     @FXML
     protected void initialize() {
@@ -184,6 +186,15 @@ public class StudentController implements DefaultController {
             columnMyCourseCost.setCellValueFactory(new PropertyValueFactory<Course, Double>("cost"));
             ObservableList<Course> courseObservableList = FXCollections.observableArrayList(courseArrayList.getCourseArrayList());
             tableMyCourses.setItems(courseObservableList);
+            int countOfCourses = courseObservableList.size();
+            double sumOfCourses = 0.0d;
+            for (Course c: courseObservableList){
+                sumOfCourses += c.getCost();
+            }
+            labelCountOfMyCourse.setText(String.valueOf(countOfCourses));
+            labelSumOfMyCourse.setText(String.valueOf(sumOfCourses));
+//            System.out.println("Count of my courses: " + countOfCourses);
+//            System.out.println("Sum : " + sumOfCourses + " BYN");
         } else {
             labelTitle.setText(response.getMessage());
         }
