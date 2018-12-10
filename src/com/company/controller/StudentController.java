@@ -1,11 +1,9 @@
 package com.company.controller;
 
-import com.company.model.abstraction.User;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
-import javafx.scene.Node;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -31,10 +29,9 @@ public class StudentController implements DefaultController {
     public MenuItem menuItemDeleteAccount;
     public MenuItem menuItemShowMyCourses;
     public MenuItem menuItemShowAllCourses;
-    public MenuItem menuItemSearchCourse;
     public MenuItem menuItemShowAllTeachers;
     public MenuItem menuItemShowMyTeachers;
-    public MenuItem menuItemSearchTeacher;
+    public MenuItem menuItemInfoAboutCourses;
     public MenuItem menuItemWriteToAdmin;
     public MenuItem menuItemLogOut;
 

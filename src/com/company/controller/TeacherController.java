@@ -2,7 +2,6 @@ package com.company.controller;
 
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
-import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
@@ -19,7 +18,6 @@ import com.company.transport.response.Response;
 import com.company.view.CurrentUser;
 import com.company.view.NodeWorker;
 
-import javax.swing.*;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
@@ -111,9 +109,6 @@ public class TeacherController implements DefaultController {
         paneDeleteAccount.setVisible(true);
     }
 
-    public void actionShowCourse() {
-    }
-
     public void actionShowMyCourses() {
         labelTitle.setText("Мои курсы");
         hidePanes();
@@ -201,6 +196,41 @@ public class TeacherController implements DefaultController {
         }
     }
 
+    public void actionMoreInfoAboutMyCourse() {
+        paneMoreInfoAboutMyCourse.setVisible(true);
+        Course course = tableMyCourses.getSelectionModel().getSelectedItem();
+        String text = "Название: " + course.getNameOfCourse() + "\n" +
+                "Преподаватель: " + course.getTeacher()  + "\n" +
+                "Язык: "  + course.getLanguage() + "\n" +
+                "Уровень: "  + course.getLevel() + "\n" +
+                "Дата начала: "  + course.getStartDate() + "\n" +
+                "Стоимость: "  + course.getCost() + " BYN.";
+        textInfoAboutMyCourse.setText(text);
+        paneMoreInfoAboutMyCourse.setVisible(true);
+    }
+
+    public void actionShowMoreInfoAboutCourse() {
+        Course course = tableAllCourses.getSelectionModel().getSelectedItem();
+        String text = "Название: " + course.getNameOfCourse() + "\n" +
+                "Преподаватель: " + course.getTeacher()  + "\n" +
+                "Язык: "  + course.getLanguage() + "\n" +
+                "Уровень: "  + course.getLevel() + "\n" +
+                "Дата начала: "  + course.getStartDate() + "\n" +
+                "Стоимость: "  + course.getCost() + " BYN.";
+        textInfoAboutAllCourse.setText(text);
+        paneMoreInfoAboutCourse.setVisible(true);
+    }
+
+    public void actionCloseMoreInfoAboutCourse() {
+        paneMoreInfoAboutCourse.setVisible(false);
+        textInfoAboutAllCourse.setText("");
+    }
+
+    public void actionSubmitAddMoreInfoAboutCourse() {
+        paneMoreInfoAboutMyCourse.setVisible(false);
+        textInfoAboutMyCourse.setText("");
+    }
+
     public void actionLogOut() {
         labelTitle.setText("Выйти");
         NodeWorker.closeWindow(labelTitle);
@@ -257,7 +287,7 @@ public class TeacherController implements DefaultController {
         setUserFields();
     }
 
-    public void actionSubmitDeleteAccount(ActionEvent actionEvent) {
+    public void actionSubmitDeleteAccount() {
         if (CurrentUser.getUser().getPassword().equals(textPasswordToDeleteAccount.getText())) {
             Request request = new Request(Request.DELETE, CurrentUser.getUser());
             messageSender.sendRequestToServer(request);
@@ -303,40 +333,5 @@ public class TeacherController implements DefaultController {
         paneMoreInfoAboutCourse.setVisible(false);
         paneMoreInfoAboutMyCourse.setVisible(false);
         imageBack.setVisible(true);
-    }
-
-    public void actionMoreInfoAboutMyCourse(ActionEvent actionEvent) {
-        paneMoreInfoAboutMyCourse.setVisible(true);
-        Course course = tableMyCourses.getSelectionModel().getSelectedItem();
-        String text = "Название: " + course.getNameOfCourse() + "\n" +
-                "Преподаватель: " + course.getTeacher()  + "\n" +
-                "Язык: "  + course.getLanguage() + "\n" +
-                "Уровень: "  + course.getLevel() + "\n" +
-                "Дата начала: "  + course.getStartDate() + "\n" +
-                "Стоимость: "  + course.getCost() + " BYN.";
-        textInfoAboutMyCourse.setText(text);
-        paneMoreInfoAboutMyCourse.setVisible(true);
-    }
-
-    public void actionShowMoreInfoAboutCourse(ActionEvent actionEvent) {
-        Course course = tableAllCourses.getSelectionModel().getSelectedItem();
-        String text = "Название: " + course.getNameOfCourse() + "\n" +
-                "Преподаватель: " + course.getTeacher()  + "\n" +
-                "Язык: "  + course.getLanguage() + "\n" +
-                "Уровень: "  + course.getLevel() + "\n" +
-                "Дата начала: "  + course.getStartDate() + "\n" +
-                "Стоимость: "  + course.getCost() + " BYN.";
-        textInfoAboutAllCourse.setText(text);
-        paneMoreInfoAboutCourse.setVisible(true);
-    }
-
-    public void actionCloseMoreInfoAboutCourse(ActionEvent actionEvent) {
-        paneMoreInfoAboutCourse.setVisible(false);
-        textInfoAboutAllCourse.setText("");
-    }
-
-    public void actionSubmitAddMoreInfoAboutCourse(ActionEvent actionEvent) {
-        paneMoreInfoAboutMyCourse.setVisible(false);
-        textInfoAboutMyCourse.setText("");
     }
 }

@@ -20,14 +20,10 @@ import com.company.view.NodeWorker;
 import java.io.File;
 import java.net.MalformedURLException;
 import java.net.URL;
-import java.text.DateFormat;
-import java.text.ParseException;
-import java.text.SimpleDateFormat;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
 import java.util.Date;
-import java.util.Locale;
 
 public class IndexController implements DefaultController {
 
@@ -97,7 +93,7 @@ public class IndexController implements DefaultController {
         imageBack.setVisible(true);
     }
 
-    public void actionSubmitSignUp(ActionEvent actionEvent) throws ParseException {
+    public void actionSubmitSignUp(ActionEvent actionEvent) {
         if (isStudent) {
             TextInputControl[] texts = {textFirstNameStudentSignUp, textLastNameStudentSignUp,
                     textMiddleNameStudentSignUp,textUsernameStudentSignUp, textPasswordStudentSignUp};
@@ -118,12 +114,7 @@ public class IndexController implements DefaultController {
                 Student student = new Student(firstName,middleName,lastName,username,password,birthdate,isMale);
                 signUpAsStudent(actionEvent, student);
 
-            } else {
-
             }
-
-        } else {
-//            Sign Up as teacher
         }
     }
 
@@ -140,7 +131,6 @@ public class IndexController implements DefaultController {
             } else {
                 signInAsTeacher(actionEvent, new Teacher(username,password));
             }
-        } else {
         }
         clearTexts();
     }
