@@ -1,8 +1,11 @@
 package com.company.controller;
 
+import com.company.model.TeacherStatistics;
+import com.company.model.buffers.TeacherStatisticsArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.fxml.FXML;
+import javafx.scene.chart.PieChart;
 import javafx.scene.control.*;
 import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
@@ -21,7 +24,10 @@ import com.company.view.NodeWorker;
 import java.time.Instant;
 import java.time.LocalDate;
 import java.time.ZoneId;
+import java.util.ArrayList;
 import java.util.Date;
+import java.util.Map;
+import java.util.TreeMap;
 
 public class TeacherController implements DefaultController {
     public ImageView imageBack;
@@ -80,6 +86,8 @@ public class TeacherController implements DefaultController {
     public AnchorPane paneMoreInfoAboutMyCourse;
     public TextArea textInfoAboutMyCourse;
     public TextArea textInfoAboutAllCourse;
+    public Pane paneMyStatistics;
+    public PieChart pieMyStatistics;
 
     @FXML
     protected void initialize() {
@@ -167,7 +175,42 @@ public class TeacherController implements DefaultController {
 
     }
 
-    public void actionSearchCourse() {
+    public void actionShowStatistics() {
+        labelTitle.setText("Статистика по курсам");
+        hidePanes();
+        paneMyStatistics.setVisible(true);
+
+//        TeacherStatistics teacherStatistics = new TeacherStatistics();
+//        teacherStatistics.setStudentsCount(1);
+//        teacherStatistics.setNameOfCourse("English(" + teacherStatistics.getStudentsCount() + ")");
+//
+//        TeacherStatistics teacherStatistics1 = new TeacherStatistics();
+//        teacherStatistics1.setStudentsCount(5);
+//        teacherStatistics1.setNameOfCourse("Russian(" + teacherStatistics1.getStudentsCount() + ")");
+//
+//        ArrayList<TeacherStatistics> arrayList = new ArrayList<>();
+//        arrayList.add(teacherStatistics);
+//        arrayList.add(teacherStatistics1);
+
+        Request request = new Request(Request.GET,new TeacherStatistics(CurrentUser.getUser().getUsername()));
+        Response response = messageSender.sendRequestToServer(request);
+
+        TeacherStatisticsArrayList teacherStatisticsArrayList = (TeacherStatisticsArrayList) response.getModel();
+
+        ObservableList<PieChart.Data> pieChartData = FXCollections.observableArrayList();
+        for (int i = 0; i < teacherStatisticsArrayList.getTeacherStatisticsArrayList().size(); i++) {
+            pieChartData.add(i,new PieChart.Data(teacherStatisticsArrayList.getTeacherStatisticsArrayList().get(i).getNameOfCourse(),
+                    teacherStatisticsArrayList.getTeacherStatisticsArrayList().get(i).getStudentsCount()));
+        }
+//                FXCollections.observableArrayList(
+//                        new PieChart.Data("Grapefruit", 13),
+//                        new PieChart.Data("Oranges", 25),
+//                        new PieChart.Data("Plums", 10),
+//                        new PieChart.Data("Pears", 22),
+//                        new PieChart.Data("Apples", 30));
+        pieMyStatistics.setData(pieChartData);
+//        final PieChart chart = new PieChart(pieChartData);
+        pieMyStatistics.setTitle("Статистика по моим курсам");
     }
 
     public void actionShowMyStudents() {
@@ -332,6 +375,7 @@ public class TeacherController implements DefaultController {
         paneMyStudents.setVisible(false);
         paneMoreInfoAboutCourse.setVisible(false);
         paneMoreInfoAboutMyCourse.setVisible(false);
+        paneMyStatistics.setVisible(false);
         imageBack.setVisible(true);
     }
 }

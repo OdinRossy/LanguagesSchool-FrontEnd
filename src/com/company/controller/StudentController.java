@@ -110,6 +110,7 @@ public class StudentController implements DefaultController {
     public TextArea textInfoAboutAllCourse;
     public Label labelCountOfMyCourse;
     public Label labelSumOfMyCourse;
+    public Label labelCountOfAllCourses;
 
     @FXML
     protected void initialize() {
@@ -186,15 +187,15 @@ public class StudentController implements DefaultController {
             columnMyCourseCost.setCellValueFactory(new PropertyValueFactory<Course, Double>("cost"));
             ObservableList<Course> courseObservableList = FXCollections.observableArrayList(courseArrayList.getCourseArrayList());
             tableMyCourses.setItems(courseObservableList);
-            int countOfCourses = courseObservableList.size();
-            double sumOfCourses = 0.0d;
+            int countOfMyCourses = courseObservableList.size();
+            double sumOfMyCourses = 0.0d;
             for (Course c: courseObservableList){
-                sumOfCourses += c.getCost();
+                sumOfMyCourses += c.getCost();
             }
-            labelCountOfMyCourse.setText(String.valueOf(countOfCourses));
-            labelSumOfMyCourse.setText(String.valueOf(sumOfCourses));
-//            System.out.println("Count of my courses: " + countOfCourses);
-//            System.out.println("Sum : " + sumOfCourses + " BYN");
+            labelCountOfMyCourse.setText(String.valueOf(countOfMyCourses));
+            labelSumOfMyCourse.setText(String.valueOf(sumOfMyCourses));
+//            System.out.println("Count of my courses: " + countOfMyCourses);
+//            System.out.println("Sum : " + sumOfMyCourses + " BYN");
         } else {
             labelTitle.setText(response.getMessage());
         }
@@ -222,6 +223,8 @@ public class StudentController implements DefaultController {
                 columnAllCourseCost.setCellValueFactory(new PropertyValueFactory<Course, Double>("cost"));
                 ObservableList<Course> courseObservableList = FXCollections.observableArrayList(courseArrayList.getCourseArrayList());
                 tableAllCourses.setItems(courseObservableList);
+                int countOfAllCourses = courseObservableList.size();
+                labelCountOfAllCourses.setText(String.valueOf(countOfAllCourses));
             }
             else {
                 labelTitle.setText(response.getMessage());
