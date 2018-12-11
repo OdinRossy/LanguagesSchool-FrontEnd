@@ -1,6 +1,6 @@
 package com.company.controller;
 
-import com.company.model.TeacherStatistics;
+import com.company.model.*;
 import com.company.model.buffers.TeacherStatisticsArrayList;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -11,9 +11,6 @@ import javafx.scene.control.cell.PropertyValueFactory;
 import javafx.scene.image.ImageView;
 import javafx.scene.layout.AnchorPane;
 import javafx.scene.layout.Pane;
-import com.company.model.Course;
-import com.company.model.Student;
-import com.company.model.Teacher;
 import com.company.model.buffers.CoursesArrayList;
 import com.company.model.buffers.StudentsArrayList;
 import com.company.transport.request.Request;
@@ -339,7 +336,7 @@ public class TeacherController implements DefaultController {
         labelBirthdate.setText(teacher.getBirthdate().toString());
         labelGender.setText(teacher.isMale()? "Мужской" : "Женский");
         labelSalary.setText(String.valueOf(teacher.getSalary()));
-        labelLanguage.setText(teacher.getLanguage());
+        labelLanguage.setText(teacher.getLanguage().getName());
 
         textFirstName.setText(CurrentUser.getUser().getFirstName());
         textMiddleName.setText(CurrentUser.getUser().getMiddleName());

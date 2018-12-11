@@ -1,6 +1,7 @@
 package com.company.controller;
 
 import com.company.model.Language;
+import com.company.model.Teacher;
 import com.company.model.buffers.LanguagesArrayList;
 import com.company.transport.request.Request;
 import com.company.transport.response.Response;
@@ -11,6 +12,11 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.control.*;
 import javafx.scene.layout.Pane;
+
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class AdminController implements DefaultController {
     public Label labelTitle;
@@ -130,9 +136,38 @@ public class AdminController implements DefaultController {
     }
 
     public void actionSubmitAddTeacher() {
+        TextInputControl [] texts = {textFirstName, textLastName, textMiddleName, textPassword, textUsername, textSalary};
+        if (NodeWorker.textValidator(texts)) {
+            String firstName = textFirstName.getText();
+            String lastName = textLastName.getText();
+            String middleName = textMiddleName.getText();
+            String username = textUsername.getText();
 
+            LocalDate localDate = dateBirthdate.getValue();
+            Instant instant = Instant.from(localDate.atStartOfDay(ZoneId.systemDefault()));
+            Date birthdate = Date.from(instant);
+
+            String password = textPassword.getText();
+            boolean isMale = toggleMale.isSelected();
+            Language language = (Language) comboLanguage.getValue();
+            try {
+                double salary = Double.parseDouble(textSalary.getText());
+                Teacher teacher = new Teacher(firstName,middleName,lastName,username,password,birthdate,isMale,salary,"",language);
+                Request request = new Request(Request.POST, teacher, "SignUp");
+                Response response = messageSender.sendRequestToServer(request);
+                if (response != null) {
+                    if (response.isSuccess()){
+                        System.out.println("Success");
+                    } else {
+                        System.out.println("Not success");
+                    }
+                }
+            } catch (NumberFormatException e){
+                NodeWorker.animateNode(textSalary);
+                textSalary.setText("");
+            }
+        }
     }
-
     private void hidePanes() {
         labelTitle.setText("");
         paneStatistics.setVisible(false);

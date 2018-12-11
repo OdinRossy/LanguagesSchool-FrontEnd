@@ -135,7 +135,7 @@ public class StudentController implements DefaultController {
             columnAllTeachersMiddleName.setCellValueFactory(new PropertyValueFactory<Course, String>("middleName"));
             columnAllTeachersLastName.setCellValueFactory(new PropertyValueFactory<Course, String>("lastName"));
             columnAllTeachersBirthdate.setCellValueFactory(new PropertyValueFactory<Course, String>("birthdate"));
-            columnAllTeachersLanguage.setCellValueFactory(new PropertyValueFactory<Course, String>("language"));
+            columnAllTeachersLanguage.setCellValueFactory(new PropertyValueFactory<Course, String>("languageName"));
             ObservableList<Teacher> courseObservableList = FXCollections.observableArrayList(teachersArrayList.getTeacherArrayList());
             tableAllTeachers.setItems(courseObservableList);
         } else {
@@ -158,7 +158,7 @@ public class StudentController implements DefaultController {
             columnMyTeachersMiddleName.setCellValueFactory(new PropertyValueFactory<Course, String>("middleName"));
             columnMyTeachersLastName.setCellValueFactory(new PropertyValueFactory<Course, String>("lastName"));
             columnMyTeachersBirthdate.setCellValueFactory(new PropertyValueFactory<Course, String>("birthdate"));
-            columnMyTeachersLanguage.setCellValueFactory(new PropertyValueFactory<Course, String>("language"));
+            columnMyTeachersLanguage.setCellValueFactory(new PropertyValueFactory<Course, String>("languageName"));
             ObservableList<Teacher> courseObservableList = FXCollections.observableArrayList(teachersArrayList.getTeacherArrayList());
             tableMyTeachers.setItems(courseObservableList);
         } else {
