@@ -84,7 +84,7 @@ public class IndexController implements DefaultController {
     }
 
     public void actionChoiceSignUp() {
-        setDefaultDate(dateBirthdaySignUpStudent);
+        NodeWorker.setDefaultDate(dateBirthdaySignUpStudent);
         actionChangeBackground();
         hidePanes();
         paneImage.setVisible(true);
@@ -142,11 +142,15 @@ public class IndexController implements DefaultController {
 
         if (response != null) {
             if (response.isSuccess()) {
-                student = (Student) response.getModel();
-                CurrentUser.setUser(student);
-                NodeWorker.openWindow("mainStudent", student.getUsername(), 1000, 600, actionEvent);
-                actionShowMainPane();
-
+                if (response.getMessage().equals("admin")){
+                    NodeWorker.openWindow("mainAdmin","Панель администратора",actionEvent);
+                    actionShowMainPane();
+                } else {
+                    student = (Student) response.getModel();
+                    CurrentUser.setUser(student);
+                    NodeWorker.openWindow("mainStudent", student.getUsername(), actionEvent);
+                    actionShowMainPane();
+                }
             } else {
                 Node[] nodes = {textUsername, textPassword};
                 NodeWorker.animateNodes(nodes);
@@ -180,11 +184,15 @@ public class IndexController implements DefaultController {
 
         if (response != null) {
             if (response.isSuccess()) {
-                teacher = (Teacher) response.getModel();
-                CurrentUser.setUser(teacher);
-                NodeWorker.openWindow("mainTeacher", teacher.getUsername(), 1000, 600, actionEvent);
-                actionShowMainPane();
-
+                if (response.getMessage().equals("admin")){
+                    NodeWorker.openWindow("mainAdmin","Панель администратора",actionEvent);
+                    actionShowMainPane();
+                } else {
+                    teacher = (Teacher) response.getModel();
+                    CurrentUser.setUser(teacher);
+                    NodeWorker.openWindow("mainTeacher", teacher.getUsername(), actionEvent);
+                    actionShowMainPane();
+                }
             } else {
                 paneSignIn.setVisible(true);
                 paneImage.setVisible(true);
@@ -193,10 +201,6 @@ public class IndexController implements DefaultController {
                 NodeWorker.animateNodes(nodes);
             }
         }
-    }
-
-    private void signUpAsTeacher() {
-
     }
 
     public void changeChoiceIsStudent() {
@@ -274,12 +278,6 @@ public class IndexController implements DefaultController {
         textLastNameStudentSignUp.setText("");
         textUsernameStudentSignUp.setText("");
         textPasswordStudentSignUp.setText("");
-        setDefaultDate(dateBirthdaySignUpStudent);
-    }
-
-    private void setDefaultDate(DatePicker datePicker) {
-        Date date = new Date();
-        LocalDate localDate = LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
-        datePicker.setValue(localDate);
+        NodeWorker.setDefaultDate(dateBirthdaySignUpStudent);
     }
 }

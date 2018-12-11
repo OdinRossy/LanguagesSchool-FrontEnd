@@ -6,6 +6,7 @@ import javafx.fxml.FXMLLoader;
 import javafx.scene.Node;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
+import javafx.scene.control.DatePicker;
 import javafx.scene.control.TextInputControl;
 import javafx.stage.Modality;
 import javafx.stage.Stage;
@@ -14,6 +15,10 @@ import javafx.util.Duration;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
+import java.time.Instant;
+import java.time.LocalDate;
+import java.time.ZoneId;
+import java.util.Date;
 
 public class NodeWorker implements ViewConfiguration {
 
@@ -53,7 +58,7 @@ public class NodeWorker implements ViewConfiguration {
         return isFieldsValid;
     }
 
-    public static void openWindow(String filename, String Window_Title, double width, double height, ActionEvent actionEvent) {
+    public static void openWindow(String filename, String Window_Title, ActionEvent actionEvent) {
         final String PATH_TO_FXML = ViewConfiguration.PATH_TO_FXML + "/" + filename + ViewConfiguration.FXML_EXTENSION;
 
         try {
@@ -82,6 +87,12 @@ public class NodeWorker implements ViewConfiguration {
 
     private static boolean isTextEmpty(TextInputControl text) {
         return text.getText().trim().equals("") && text.getText().trim().length() == 0;
+    }
+
+    public static void setDefaultDate(DatePicker datePicker) {
+        Date date = new Date();
+        LocalDate localDate = LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
+        datePicker.setValue(localDate);
     }
 
 }

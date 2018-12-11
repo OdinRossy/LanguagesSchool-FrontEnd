@@ -299,19 +299,6 @@ public class StudentController implements DefaultController {
         else NodeWorker.animateNode(labelInfoAddCourse);
     }
 
-    public void actionMoreInfoAboutCourse() {
-        paneMoreInfoAboutCourse.setVisible(true);
-        Course course = tableMyCourses.getSelectionModel().getSelectedItem();
-        String text = "Название: " + course.getNameOfCourse() + "\n" +
-                "Преподаватель: " + course.getTeacher()  + "\n" +
-                "Язык: "  + course.getLanguage() + "\n" +
-                "Уровень: "  + course.getLevel() + "\n" +
-                "Дата начала: "  + course.getStartDate() + "\n" +
-                "Стоимость: "  + course.getCost() + " BYN.";
-        textInfoAboutAllCourse.setText(text);
-        paneMoreInfoAboutCourse.setVisible(true);
-    }
-
     public void actionSubmitDeleteCourse() {
         Course course = tableMyCourses.getSelectionModel().getSelectedItem();
         Order order = new Order((Student) CurrentUser.getUser(), course);
@@ -386,9 +373,10 @@ public class StudentController implements DefaultController {
         textLastName.setText(CurrentUser.getUser().getLastName());
         textUsername.setText(CurrentUser.getUser().getUsername());
         textPassword.setText(CurrentUser.getUser().getPassword());
-        Date date = CurrentUser.getUser().getBirthdate();
-        LocalDate localDate = LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
-        dateBirthdate.setValue(localDate);
+//        Date date = CurrentUser.getUser().getBirthdate();
+//        LocalDate localDate = LocalDate.from(Instant.ofEpochMilli(date.getTime()).atZone(ZoneId.systemDefault()));
+//        dateBirthdate.setValue(localDate);
+        NodeWorker.setDefaultDate(dateBirthdate);
         toggleMale.setSelected(CurrentUser.getUser().isMale());
         toggleFemale.setSelected(!CurrentUser.getUser().isMale());
     }
