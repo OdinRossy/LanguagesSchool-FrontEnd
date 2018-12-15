@@ -31,7 +31,6 @@ public class StudentController implements DefaultController {
     public MenuItem menuItemShowAllCourses;
     public MenuItem menuItemShowAllTeachers;
     public MenuItem menuItemShowMyTeachers;
-    public MenuItem menuItemInfoAboutCourses;
     public MenuItem menuItemWriteToAdmin;
     public MenuItem menuItemLogOut;
 
@@ -40,7 +39,6 @@ public class StudentController implements DefaultController {
 
     public Label labelTitle;
     public Label labelUsernameTop;
-    public Label labelInfoAddCourse;
 
     public Label labelUsername;
     public Label labelPassword;
@@ -296,7 +294,6 @@ public class StudentController implements DefaultController {
                 labelTitle.setText("Ошибка при добавлении записи");
             }
         }
-        else NodeWorker.animateNode(labelInfoAddCourse);
     }
 
     public void actionSubmitDeleteCourse() {
@@ -312,7 +309,6 @@ public class StudentController implements DefaultController {
                 labelTitle.setText("Ошибка при отписки от курса");
             }
         }
-        else NodeWorker.animateNode(labelInfoAddCourse);
     }
 
     public void actionShowAccount() {
