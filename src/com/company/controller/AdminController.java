@@ -5,6 +5,7 @@ import com.company.model.Teacher;
 import com.company.model.buffers.LanguagesArrayList;
 import com.company.transport.request.Request;
 import com.company.transport.response.Response;
+import com.company.view.CurrentUser;
 import com.company.view.NodeWorker;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
@@ -115,7 +116,8 @@ public class AdminController implements DefaultController {
     }
 
     public void actionLogOut() {
-
+        labelTitle.setText("Выйти");
+        NodeWorker.closeWindow(labelTitle);
     }
 
     public void actionShowAccount() {
