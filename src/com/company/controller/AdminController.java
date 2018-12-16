@@ -1,5 +1,6 @@
 package com.company.controller;
 
+import com.company.model.Admin;
 import com.company.model.Language;
 import com.company.model.Teacher;
 import com.company.model.buffers.LanguagesArrayList;
@@ -134,7 +135,10 @@ public class AdminController implements DefaultController {
 
     public void actionStopServer() {
         hidePanes();
+        Request request = new Request(Request.POST, new Admin(Admin.ACTION_STOP_SERVER));
+        messageSender.sendRequestToServer(request);
         labelTitle.setText("Cервер отключен, любые последующие изменения не будут сохранены");
+        actionLogOut();
     }
 
     public void actionSubmitAddTeacher() {
@@ -170,6 +174,7 @@ public class AdminController implements DefaultController {
             }
         }
     }
+
     private void hidePanes() {
         labelTitle.setText("");
         paneStatistics.setVisible(false);
